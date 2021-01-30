@@ -25,6 +25,7 @@ django-storages = "*"
 boto3 = "*"
 django-templated-mail = "*"
 graphene = "*"
+mysql-client = "*"
 
 [requires]
 python_version = "3.8"
