@@ -1,5 +1,4 @@
 {
-
   "name": "JollyTeam",
   "version": "0.1.0",
   "private": true,
@@ -17,7 +16,7 @@
     "@types/react-select": "^3.0.19",
     "antd": "^4.9.4",
     "apollo-boost": "^0.4.9",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "classnames": "^2.2.6",
     "formik": "^2.1.4",
     "graphql": "^15.3.0",
@@ -48,28 +47,28 @@
     "start-sw": "http-server ./build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
-},
-"eslintConfig": {
-"extends": "react-app"
-},
-"browserslist": {
-"production": [
-">0.2%",
-"not dead",
-"not op_mini all"
-],
-"development": [
-"last 1 chrome version",
-"last 1 firefox version",
-"last 1 safari version"
-]
-},
-"engines": {
-"node": "10.19.0",
-"npm": "6.14.4"
-},
-"devDependencies": {
-"gh-pages": "^3.1.0",
-"http-server": "^0.12.3"
-}
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "engines": {
+    "node": "10.19.0",
+    "npm": "6.14.4"
+  },
+  "devDependencies": {
+    "gh-pages": "^3.1.0",
+    "http-server": "^0.12.3"
+  }
 }
