@@ -23,11 +23,12 @@ import {ApolloProvider} from '@apollo/react-hooks';
 import Preloader from "./component/Preloader/preloader";
 import {PageNotFound} from "./component/layout/PageNotFound";
 import {FrequentlyAskedQuestions} from "./component/FAQ/FAQ";
-import {Profile} from "./component/User/Profile";
-import {RequestForProposals} from "./component/requestForProposals/requestForProposals";
+
 import ProfileEditContainer from "./component/accounts/Profile/ProfileEdit/ProfileEditContainer";
 import RequestForQuotationContainer from "./component/requestForProposals/requestForProposalsContainer";
 import ProfileContainer from "./component/User/ProfileContainer";
+import AddCompany from "./component/accounts/CreateCompany/NewCompanyProfile";
+import NewCompanyProfile from "./component/accounts/CreateCompany/NewCompanyProfile";
 
 
 const client = new ApolloClient({
@@ -59,6 +60,8 @@ class App extends React.Component {
                         <Switch>
                             <Route exact path='/register'
                                    render={() => <AccountTemplate> <Register/></AccountTemplate>}/>
+                            <Route exact path='/new_company'
+                                   render={() => <AccountTemplate> <NewCompanyProfile/></AccountTemplate>}/>
                             <Route exact path='/password/reset/confirm/:uid/:token'
                                    render={() => <AccountTemplate><ResetPasswordConfirmContainer/></AccountTemplate>}/>
                             <Route exact path='/reset_password'
@@ -71,7 +74,7 @@ class App extends React.Component {
                             <Route exact path='/faq' component={FrequentlyAskedQuestions}/>
                             <Route exact path='/' component={HomeContainer}/>
                             <PrivateRoute exact path='/contact' component={ContactContainer}/>
-                            <PrivateRoute exact path='/profileEdit' component={ProfileEditContainer}/>
+                            <PrivateRoute exact path='/profileEdit/:num' component={ProfileEditContainer}/>
                             <PrivateRoute exact path='/profileView' component={ProfileViewContainer}/>
                             <Route exact path='/request_for_proposals' component={RequestForQuotationContainer}/>
                             <Route exact path='/companies' component={CompaniesContainer}/>

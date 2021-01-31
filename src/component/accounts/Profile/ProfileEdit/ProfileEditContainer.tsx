@@ -11,6 +11,8 @@ import {
     GetCategory
 } from '../../../../redux/reducers/ProfileReducer'
 import {AppStateType} from "../../../../redux/redux_store";
+import {compose} from "redux";
+import {withRouter} from "react-router";
 
 export type CategoriesType = Array<{
         id: number,
@@ -64,4 +66,4 @@ const connector = connect(mapStateToProps, {
 
 type PropsFromRedux = ConnectedProps<typeof connector>
 
-export default connector(ProfileEditContainer)
+export default compose(withRouter, connector)(ProfileEditContainer)

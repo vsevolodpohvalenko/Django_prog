@@ -44,7 +44,7 @@ export const Profile: React.ComponentClass<Omit<RouteComponentProps<any>, keyof 
 
 
 
-    const profile = profiles.filter(p => p.owner === Number(props.match.params.id))
+    const profile = profiles.filter(p => p.id === Number(props.match.params.id))
     console.log(props.my_documents)
 
     const my_documents =(props.my_documents && profile[0]) ? props.my_documents.filter((e: {

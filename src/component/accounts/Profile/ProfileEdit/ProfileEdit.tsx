@@ -6,8 +6,9 @@ import defaultThumbnail from '../../../../media/thumbnail.jpg'
 import Select from 'react-select'
 import {CustomDropZoneType} from "./Document";
 import {profileAPI} from "../../../../api/profileApi";
-import { Input} from "antd"
+import {Input} from "antd"
 import Preloader from "../../../Preloader/preloader";
+import {RouteComponentProps, withRouter, WithRouterProps, WithRouterStatics} from "react-router";
 
 type InputProps = {
     element: string,
@@ -26,7 +27,7 @@ let InputText = (props: InputProps) => {
 let TextAreaText = (props: InputProps) => {
     return (<div id={s.doubleInput}><label>{props.label}</label>
             <Input.TextArea className='form-control' placeholder={props.element} id={props.element}
-                   value={props.value} onChange={props.onChange}/>
+                            value={props.value} onChange={props.onChange}/>
         </div>
     )
 }
@@ -41,6 +42,7 @@ const img = {
 };
 
 type RootPropsType = {
+    match : {params: {num: number}},
     countries: Array<any>
     category: Array<{
         id: number,
@@ -70,22 +72,23 @@ type RootPropsType = {
 
 }
 
-export const ProfileEdit = (props: RootPropsType) => {
-
-    const options = props.countries.map(c => {
+export const ProfileEdit: any | React.ComponentClass<Omit<RouteComponentProps<any>, keyof RouteComponentProps<any>> & WithRouterProps<(props: any) => JSX.Element>> & WithRouterStatics<(props: any) => JSX.Element> = withRouter((props:any) => {
+    const prevProf = props.previousProfile.filter((e:any) => e.owner === props.userID)
+    const options = props.countries.map((c:any) => {
         return {value: c.name, label: c.name}
     })
-    const categoryOptions = props.category.map(c => {
+    const categoryOptions = props.category.map((c:any) => {
         return {value: c.Name, label: c.Name}
     })
+    const num = Number(props.match.params.num)-1
 
     const [companyProfilePicture, setCompanyProfilePicture] = useState<any>();
-    const [companyLogo, setCompanyLogo] = useState<any>(props.previousProfile[(props.userID) - 1].companyLogo);
-    const [background, setBackground] = useState<string| Array<any>>(props.previousProfile[(props.userID) - 1].companyProfilePicture)
-    const [companyName, setCompanyName] = useState<string>(props.previousProfile[(props.userID) - 1].companyName)
-    const [country, setCountry] = useState<string | {value: string, label: string}>(props.previousProfile[(props.userID) - 1].country)
-    const [companyDescription, setCompanyDescription] = useState<string>(props.previousProfile[(props.userID) - 1].companyDescription)
-    const [section, setSection] = useState<any>(JSON.parse(props.previousProfile[(props.userID) - 1].sections));
+    const [companyLogo, setCompanyLogo] = useState<any>(prevProf[num].companyLogo);
+    const [background, setBackground] = useState<string | Array<any>>(prevProf[num].companyProfilePicture)
+    const [companyName, setCompanyName] = useState<string>(prevProf[num].companyName)
+    const [country, setCountry] = useState<string | { value: string, label: string }>(prevProf[num].country)
+    const [companyDescription, setCompanyDescription] = useState<string>(prevProf[num].companyDescription)
+    const [section, setSection] = useState<any>(JSON.parse(prevProf[num].sections));
     const [Documents, setDocument] = useState<any>(props.documents);
 
 
@@ -100,7 +103,7 @@ export const ProfileEdit = (props: RootPropsType) => {
         form_data.append('companyDescription', companyDescription);
         if (typeof country !== "string") {
             form_data.append('country', country.value);
-        }else {
+        } else {
             form_data.append('country', country);
         }
         form_data.append('owner', String(props.userID));
@@ -108,12 +111,12 @@ export const ProfileEdit = (props: RootPropsType) => {
         props.updateManufacturer(form_data, id)
 
         Documents.forEach((e: {
-        id: number,
-        Title: string,
-        Thumbnail: string,
-        Download: string,
-        owner: number
-    }, index: number) => {
+            id: number,
+            Title: string,
+            Thumbnail: string,
+            Download: string,
+            owner: number
+        }, index: number) => {
             let form_doc_data = new FormData();
             form_doc_data.append('Title', e.Title);
             Documents[index].Thumbnail.name && form_doc_data.append('Thumbnail', e.Thumbnail);
@@ -142,8 +145,8 @@ export const ProfileEdit = (props: RootPropsType) => {
         const index = props.index
         const file = Documents[index]
         return (
-            <div  key={file.name}>
-                <div >
+            <div key={file.name}>
+                <div>
                     <img
                         alt="thumbnail"
                         src={(file.Thumbnail.preview ? file.Thumbnail.preview : file.Thumbnail) || defaultThumbnail}
@@ -168,7 +171,7 @@ export const ProfileEdit = (props: RootPropsType) => {
                 <label>{props.label}</label>
                 <section className={s.thumb}>
 
-                    <Dropzone  onDrop={props.onDrop}>
+                    <Dropzone onDrop={props.onDrop}>
                         {({getRootProps, getInputProps}) => (
                             <div  {...getRootProps({className: "dropzone"})}>
 
@@ -188,7 +191,7 @@ export const ProfileEdit = (props: RootPropsType) => {
         )
     }
 
-    const SectionhandleInputChange = (e: {name: string, value: string}, index: number) => {
+    const SectionhandleInputChange = (e: { name: string, value: string }, index: number) => {
         debugger
         const {name, value} = e;
         const list = [...section];
@@ -197,7 +200,7 @@ export const ProfileEdit = (props: RootPropsType) => {
     };
 
 
-    const DocumentedInputChange = (e: {target: {name: string, value: string}}, index: number) => {
+    const DocumentedInputChange = (e: { target: { name: string, value: string } }, index: number) => {
         const {name, value} = e.target;
         const list = [...Documents];
         list[index][name] = value;
@@ -205,7 +208,7 @@ export const ProfileEdit = (props: RootPropsType) => {
     };
 
 
-    const DocumenthandleInputFileThumbnail = (aceptedFiles: Array<any>, index:number) => {
+    const DocumenthandleInputFileThumbnail = (aceptedFiles: Array<any>, index: number) => {
         const {preview} = Object.assign(aceptedFiles[0], {preview: URL.createObjectURL(aceptedFiles[0])});
         const list = [...Documents];
         list[index]['Thumbnail'] = aceptedFiles[0];
@@ -214,7 +217,7 @@ export const ProfileEdit = (props: RootPropsType) => {
         setDocument(list);
     }
 
-    const DocumenthandleInputDownload = (acceptedFiles: Array<any>, index:any) => {
+    const DocumenthandleInputDownload = (acceptedFiles: Array<any>, index: any) => {
         debugger
         const list = [...Documents];
         list[index]['Download'] = acceptedFiles[0];
@@ -249,109 +252,112 @@ export const ProfileEdit = (props: RootPropsType) => {
     };
 
 
-     return  (props.category && props.previousProfile) ?  (
-        <form  className={["form-group", s.form].join(" ")} onSubmit={handleSubmit}>
-            <section style={
-                {backgroundImage: `linear-gradient( rgba(56, 56, 56, 0.596), rgba(56, 56, 56, 0.596) ), url(${background || defaultImage})`}}
-                     className={s.pic}>
-                <Dropzone onDrop={handleDrop}>
-                    {({getRootProps, getInputProps}) => (
-                        <div {...getRootProps({className: "dropzone"})}>
-                            <div className={s.compamyPictureform}>
-                                <input {...getInputProps()} />
-                                <div className={s.clip}/>
-                                <p>Drag & Drop your company picture here</p>
-                                <h5>Company Profile Picture</h5>
-                                <button type="button">
-                                    Upload
-                                </button>
+    return (props.category && props.previousProfile) ? (
+            <form className={["form-group", s.form].join(" ")} onSubmit={handleSubmit}>
+                <section style={
+                    {backgroundImage: `linear-gradient( rgba(56, 56, 56, 0.596), rgba(56, 56, 56, 0.596) ), url(${background || defaultImage})`}}
+                         className={s.pic}>
+                    <Dropzone onDrop={handleDrop}>
+                        {({getRootProps, getInputProps}) => (
+                            <div {...getRootProps({className: "dropzone"})}>
+                                <div className={s.compamyPictureform}>
+                                    <input {...getInputProps()} />
+                                    <div className={s.clip}/>
+                                    <p>Drag & Drop your company picture here</p>
+                                    <h5>Company Profile Picture</h5>
+                                    <button type="button">
+                                        Upload
+                                    </button>
+                                </div>
                             </div>
-                        </div>
 
-                    )}
-                </Dropzone>
-            </section>
-            <div id={s.main}>
-                <div className={s.double}>
-                    <InputText label = "Company Name" element="companyName" value={companyName}
-                               onChange={(e: ChangeEvent<HTMLInputElement>) => setCompanyName(e.target.value)}/>
-                    <div className={s.select}>
-                        <label>Country</label>
-                        <Select options={options} defaultValue={{label: country, value: country}}
-                                placeholder={"Choose your country"} onChange={(e: any) => setCountry(e)}/>
+                        )}
+                    </Dropzone>
+                </section>
+                <div id={s.main}>
+                    <div className={s.double}>
+                        <InputText label="Company Name" element="companyName" value={companyName}
+                                   onChange={(e: ChangeEvent<HTMLInputElement>) => setCompanyName(e.target.value)}/>
+                        <div className={s.select}>
+                            <label>Country</label>
+                            <Select options={options} defaultValue={{label: country, value: country}}
+                                    placeholder={"Choose your country"} onChange={(e: any) => setCountry(e)}/>
+                        </div>
                     </div>
+                    <TextAreaText label={"Company Description"} element="companyDescription" value={companyDescription}
+                                  onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setCompanyDescription(e.target.value)}/>
+                    {companyLogo && (companyLogo[0].preview ? <img style={img} src={companyLogo[0].preview}/> :
+                        <img style={img} src={companyLogo}/>)}
+                    <CustomDropZone label="Company Logo" AllowButton={1} onDrop={handleDrop4}
+                                    p="Drag&Drop Your attachments here"/>
+
+                    {section.map((x: { Icon: any, Title: string, Text: string }, i: number) => {
+                        return (
+                            <div key={i}>
+                                <h2>Section</h2>
+                                <div className={s.double}>
+                                    <div id={s.doubleInput}>
+                                        <label>Title</label>
+                                        <input className='form-control' placeholder="Title" name="Title" value={x.Title}
+                                               onChange={e => SectionhandleInputChange(e.target, i)}/>
+                                    </div>
+                                    <div id={s.doubleInput}>
+                                        <label>Icon</label>
+                                        <Select options={categoryOptions} defaultValue={{label: x.Icon, value: x.Icon}}
+                                                placeholder="Icon" onChange={(e: any) => SectionhandleInputChange({
+                                            name: "Icon",
+                                            value: e.value
+                                        }, i)}/>
+                                    </div>
+                                </div>
+                                <label>Text</label>
+                                <Input.TextArea className='form-control' placeholder="Text" name="Text" value={x.Text}
+                                                onChange={e => SectionhandleInputChange(e.target, i)}/>
+                                <div className={s.tools}>
+                                    {section.length !== 1 &&
+                                    <button type="button" className="btn btn-outline-danger"
+                                            onClick={() => handleRemoveClick(i)}>Remove</button>}
+                                    {section.length - 1 === i &&
+                                    <button type="button" className="btn btn-outline-primary" onClick={() => {
+                                        handleAddClick()
+                                    }}>Add 1 Section</button>}
+                                </div>
+                            </div>
+                        )
+                    })}
+
+
+                    {Documents && Documents.map((y: { Title: string }, i: number) => {
+                        return (
+                            <div key={i}>
+                                <h2>Document</h2>
+                                <label>Title</label>
+                                <input className='form-control' placeholder="Title" name="Title" value={y.Title}
+                                       onChange={e => DocumentedInputChange(e, i)}/>
+
+                                <Thumbs documents={props.documents} userID={props.userID} index={i}/>
+
+                                <CustomDropZone name="Thumbnail" label="Thumbnail" AllowButton={0}
+                                                onDrop={(acceptedFiles: any) => DocumenthandleInputFileThumbnail(acceptedFiles, i)}
+                                                p="Drag&Drop Your attachments here"/>
+                                <CustomDropZone name="Download" label="Download" AllowButton={1}
+                                                onDrop={(acceptedFiles: any) => DocumenthandleInputDownload(acceptedFiles, i)}
+                                                p="Drag&Drop Your attachments here"/>
+                                <div className={s.tools}>
+                                    {Documents.length !== 1 &&
+                                    <button type="button" className="btn btn-outline-danger"
+                                            onClick={() => handleRemoveClick2(i)}>Remove</button>}
+                                    {Documents.length - 1 === i &&
+                                    <button type="button" className="btn btn-outline-primary" onClick={() => {
+                                        handleAddClick2()
+                                    }}>Add 1 Document</button>}
+                                </div>
+                            </div>
+                        )
+                    })}
+                    <button className={s.button} type={"submit"}>Submit</button>
                 </div>
-                <TextAreaText label={"Company Description"} element="companyDescription" value={companyDescription}
-                           onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setCompanyDescription(e.target.value)}/>
-                {companyLogo && ( companyLogo[0].preview ? <img style={img} src={companyLogo[0].preview}/> : <img style={img} src={companyLogo}/>)}
-                <CustomDropZone label="Company Logo" AllowButton={1} onDrop={handleDrop4}
-                    p="Drag&Drop Your attachments here"/>
-
-                {section.map((x: {Icon: any, Title: string, Text: string}, i: number) => {
-                    return (
-                        <div key={i}>
-                            <h2>Section</h2>
-                            <div className={s.double}>
-                                <div id={s.doubleInput}>
-                                    <label>Title</label>
-                                    <input className='form-control' placeholder="Title" name="Title" value={x.Title}
-                                           onChange={e => SectionhandleInputChange(e.target, i)}/>
-                                </div>
-                                <div id={s.doubleInput}>
-                                    <label>Icon</label>
-                                    <Select options={categoryOptions} defaultValue={{label: x.Icon, value: x.Icon}}
-                                            placeholder="Icon" onChange={(e: any) => SectionhandleInputChange({
-                                        name: "Icon",
-                                        value: e.value
-                                    }, i)}/>
-                                </div>
-                            </div>
-                            <label>Text</label>
-                            <Input.TextArea className='form-control' placeholder="Text" name="Text" value={x.Text}
-                                   onChange={e => SectionhandleInputChange(e.target, i)}/>
-                            <div className={s.tools}>
-                                {section.length !== 1 &&
-                                <button type="button" className="btn btn-outline-danger" onClick={() => handleRemoveClick(i)}>Remove</button>}
-                                {section.length - 1 === i && <button type="button" className="btn btn-outline-primary"  onClick={() => {
-                                    handleAddClick()
-                                }}>Add 1 Section</button>}
-                            </div>
-                        </div>
-                    )
-                })}
-
-
-                {Documents && Documents.map((y: {Title: string}, i: number) => {
-                    return (
-                        <div key={i}>
-                            <h2>Document</h2>
-                            <label>Title</label>
-                            <input className='form-control' placeholder="Title" name="Title" value={y.Title}
-                                   onChange={e => DocumentedInputChange(e, i)}/>
-
-                            <Thumbs documents={props.documents} userID={props.userID} index={i}/>
-
-                            <CustomDropZone name="Thumbnail" label="Thumbnail" AllowButton={0}
-                                            onDrop={(acceptedFiles: any) => DocumenthandleInputFileThumbnail(acceptedFiles, i)}
-                                            p="Drag&Drop Your attachments here"/>
-                            <CustomDropZone name="Download" label="Download" AllowButton={1}
-                                            onDrop={(acceptedFiles: any) => DocumenthandleInputDownload(acceptedFiles, i)}
-                                            p="Drag&Drop Your attachments here"/>
-                            <div className={s.tools}>
-                                {Documents.length !== 1 &&
-                                <button type="button" className="btn btn-outline-danger" onClick={() => handleRemoveClick2(i)}>Remove</button>}
-                                {Documents.length - 1 === i && <button type="button" className="btn btn-outline-primary" onClick={() => {
-                                    handleAddClick2()
-                                }}>Add 1 Document</button>}
-                            </div>
-                        </div>
-                    )
-                })}
-                <button className={s.button} type={"submit"}>Submit</button>
-            </div>
-        </form>
-    )
- :  <Preloader/>}
-
-
-
+            </form>
+        )
+        : <Preloader/>
+})

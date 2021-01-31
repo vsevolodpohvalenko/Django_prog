@@ -2,12 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d5115415-a259-4235-b5f1-8de4f5639f87" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/component/accounts/CreateCompany/NewCompanyProfile.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FAQ/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/FAQ/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pipfile" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pipfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/profileApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/profileApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/User/Profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/User/Profile.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/accounts/Profile/ProfileEdit/ProfileEdit.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/accounts/Profile/ProfileEdit/ProfileEdit.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/accounts/Profile/ProfileEdit/ProfileEditContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/accounts/Profile/ProfileEdit/ProfileEditContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/accounts/Profile/ProfileView/ProfileView.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/accounts/Profile/ProfileView/ProfileView.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/accounts/Profile/ProfileView/ProfileView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/accounts/Profile/ProfileView/ProfileView.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/accounts/Register/register.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/accounts/Register/register.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/AuthReducer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/AuthReducer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +136,7 @@
       <workItem from="1610096800798" duration="34000" />
       <workItem from="1611983406913" duration="17963000" />
       <workItem from="1612002753784" duration="826000" />
-      <workItem from="1612003758504" duration="7764000" />
+      <workItem from="1612003758504" duration="29763000" />
     </task>
     <task id="LOCAL-00001" summary="Extra update">
       <created>1608062295835</created>

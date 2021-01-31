@@ -41,16 +41,19 @@ class FAQ_item(models.Model):
 class CompanyProfilePage(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     companyProfilePicture = models.ImageField(default='24original1431380543.jpg', upload_to=upload_path)
-    companyName = models.CharField(max_length=60, blank=True, default="Company")
+    companyName = models.CharField(max_length=128, blank=True, default="Company")
     companyDescription = models.TextField(default="This company doesn't have any description")
     country = models.CharField(max_length=200, blank=True, default="Undefined")
     companyLogo = models.ImageField(default='logo-social.png', upload_to=upload_path)
     sections = models.TextField(default="[{""}]")
 
+    def __str__(self):
+        return self.companyName
+
 
 class Document(models.Model):
-    owner = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
-    Title = models.CharField(max_length=75, default= "")
+    profile = models.ForeignKey(CompanyProfilePage, on_delete=models.CASCADE, default=1)
+    Title = models.CharField(max_length=75, default=" ")
     Thumbnail = models.ImageField(default='dot-com.jpg')
     Download = models.FileField(default='dot-com.jpg')
 

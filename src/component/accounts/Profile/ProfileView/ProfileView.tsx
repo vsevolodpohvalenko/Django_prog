@@ -34,7 +34,7 @@ export type DocType = Array<{
     Title: string,
     Thumbnail: string,
     Download: string,
-    owner: number
+    profile: number
 }>
 
 type RootProps = {
@@ -45,6 +45,7 @@ type RootProps = {
 
 export const ProfileView = (props: RootProps) => {
     debugger
+
     return <div className={s.main}>
         {props.profiles.map((p, index) => (
             <div key={index}>
@@ -57,11 +58,12 @@ export const ProfileView = (props: RootProps) => {
                             <h5>{p.country}</h5>
                         </div>
                     </div>
-                    <div className={[s.edit_button, s.edit].join(' ')}><Link to={"/profileEdit"}>Edit</Link></div>
+                    <div className={[s.edit_button, s.edit].join(' ')}><Link
+                        to={`/profileEdit/${index + 1}`}>Edit</Link></div>
                 </div>
 
                 <div className={s.box_size}>
-                    <div className={[s.button].join(' ')}><Link to={"/profileEdit"}>Edit</Link></div>
+                    <div className={[s.button].join(' ')}><Link to={`/profileEdit/${index}`}>Edit</Link></div>
                     <p>{p.companyDescription}</p>
                     <div className={s.Sections}>
                         {/*<p>{p.section}</p>*/}
@@ -71,27 +73,27 @@ export const ProfileView = (props: RootProps) => {
                                 Title: string
                             }, index: number) => (
                                 <div key={index} className={s.section}>
-                               <div>
-                                    {e.Icon === "Logistics companies" && (
-                                        <CarOutlined className={s.icon}/>)}
-                                    {e.Icon === "Restaurant business" && (
-                                        <CoffeeOutlined className={s.icon}/>)}
-                                    {e.Icon === "Grocery supplier" && (
-                                        <ShopOutlined className={s.icon}/>)}
-                                    {e.Icon === "Small manufacturers" && (
-                                        <BulbOutlined className={s.icon}/>)}
-                                    {e.Icon === "Fabric supplier" && (
-                                        <SkinOutlined className={s.icon}/>)}
-                                    {e.Icon === "Supplier of kitchen utensils" && (
-                                        <SettingOutlined className={s.icon}/>)}
-                                    {e.Icon === "Supplier of household appliances" && (
-                                        <ApiOutlined className={s.icon}/>)}
-                                    {e.Icon === "Interior designers" && (
-                                        <FormatPainterOutlined className={s.icon}/>)}
+                                    <div>
+                                        {e.Icon === "Logistics companies" && (
+                                            <CarOutlined className={s.icon}/>)}
+                                        {e.Icon === "Restaurant business" && (
+                                            <CoffeeOutlined className={s.icon}/>)}
+                                        {e.Icon === "Grocery supplier" && (
+                                            <ShopOutlined className={s.icon}/>)}
+                                        {e.Icon === "Small manufacturers" && (
+                                            <BulbOutlined className={s.icon}/>)}
+                                        {e.Icon === "Fabric supplier" && (
+                                            <SkinOutlined className={s.icon}/>)}
+                                        {e.Icon === "Supplier of kitchen utensils" && (
+                                            <SettingOutlined className={s.icon}/>)}
+                                        {e.Icon === "Supplier of household appliances" && (
+                                            <ApiOutlined className={s.icon}/>)}
+                                        {e.Icon === "Interior designers" && (
+                                            <FormatPainterOutlined className={s.icon}/>)}
 
 
-                                    <h3>{e.Title}</h3>
-                                </div>
+                                        <h3>{e.Title}</h3>
+                                    </div>
                                     <p>{e.Text}</p>
 
                                 </div>
@@ -99,16 +101,19 @@ export const ProfileView = (props: RootProps) => {
                         )}
                     </div>
                 </div>
+                <div className={[s.Documents].join(' ')}>
+                    {props.my_documents && props.my_documents.map(d => (d.profile === index && <div key={d.id}>
+                            <a href={d.Download} download><img alt={"thumbnail"} src={d.Thumbnail}/></a>
+                            <p>{d.Title}</p>
+                            <a href={d.Download} download>Download</a>
+                        </div>
+                    ))}
+                </div>
             </div>
         ))}
-        <div className={[s.Documents].join(' ')}>
-            {props.my_documents && props.my_documents.map(d => (<div key={d.id}>
-                    <a href={d.Download} download><img alt={"thumbnail"} src={d.Thumbnail}/></a>
-                    <p>{d.Title}</p>
-                    <a href={d.Download} download>Download</a>
-                </div>
-            ))}
-        </div>
+
+        <div style={{justifyContent: 'center', display: "flex"}}><Link className={s.add} to={`/new_company`}>Add Company
+            Profile</Link></div>
     </div>
 
 }

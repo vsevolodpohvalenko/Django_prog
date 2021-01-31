@@ -131,8 +131,8 @@ export const register = (dataR: {csrf_token: string, email: string, first_name: 
             type: CREATE_MESSAGE,
             payload: {registered: "Check your email!"}
         })
-        await profileAPI.PostProfile(response.data.id)
-        await profileAPI.PostDocuments(response.data.id)
+        // await profileAPI.PostProfile(response.data.id)
+        // await profileAPI.PostDocuments(response.data.id)
         dispatch(actions.loadUserSuccess)
     } catch (err) {
         const error = {

@@ -26,10 +26,14 @@ export const instance = axios.create({
 });
 export const profileAPI = {
 
-   PostProfile: (id: number) => {
+   PostProfile: (data: {CompanyName : string, companyLogo: any, CompanyDescriptions: string, section: {}, owner: number}) => {
        debugger
        let form_data = new FormData();
-       form_data.append('owner', String(id));
+       form_data.append('owner', String(data.owner));
+       form_data.append('companyName', String(data.CompanyName));
+       form_data.append('companyDescription', String(data.CompanyDescriptions));
+       form_data.append('sections', JSON.stringify(data.section));
+       form_data.append('companyLogo', data.companyLogo, data.companyLogo.name)
        return instance.post<SingleProfile>('CompanyProfilePage/', form_data, config2)
    },
 

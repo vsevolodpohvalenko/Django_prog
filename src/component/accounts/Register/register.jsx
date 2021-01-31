@@ -63,7 +63,7 @@ class Register extends React.Component {
         }
 
         if (this.props.isAuthenticated) {
-            return <Redirect to="/"/>
+            return <Redirect to="/new_company"/>
         }
 
         const {first_name, last_name, email, password} = this.state
