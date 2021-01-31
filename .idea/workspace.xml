@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d5115415-a259-4235-b5f1-8de4f5639f87" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/profileApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/profileApi.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/Templates/account_template/account_template.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/Templates/account_template/account_template.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/accounts/Profile/ProfileEdit/ProfileEdit.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/accounts/Profile/ProfileEdit/ProfileEdit.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/accounts/Profile/ProfileEdit/ProfileEditContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/accounts/Profile/ProfileEdit/ProfileEditContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/accounts/Profile/ProfileView/ProfileView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/accounts/Profile/ProfileView/ProfileView.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/accounts/Profile/ProfileView/ProfileViewContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/accounts/Profile/ProfileView/ProfileViewContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/accounts/activate/Activate.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/accounts/activate/Activate.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/accounts/activate/ActivateContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/accounts/activate/ActivateContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/AuthReducer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/AuthReducer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/ProfileReducer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/ProfileReducer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +122,7 @@
       <workItem from="1612003758504" duration="37745000" />
       <workItem from="1612108642875" duration="721000" />
       <workItem from="1612113833285" duration="27000" />
-      <workItem from="1612113870564" duration="3254000" />
+      <workItem from="1612113870564" duration="3737000" />
     </task>
     <task id="LOCAL-00001" summary="Extra update">
       <created>1608062295835</created>
