@@ -81,7 +81,8 @@ export const ProfileEdit: any | React.ComponentClass<Omit<RouteComponentProps<an
         return {value: c.Name, label: c.Name}
     })
     const num = Number(props.match.params.num)-1
-
+    debugger
+    const documents = props.documents.filter((e:any) => e.profile === prevProf[num].id)
     const [companyProfilePicture, setCompanyProfilePicture] = useState<any>();
     const [companyLogo, setCompanyLogo] = useState<any>(prevProf[num].companyLogo);
     const [background, setBackground] = useState<string | Array<any>>(prevProf[num].companyProfilePicture)
@@ -89,7 +90,7 @@ export const ProfileEdit: any | React.ComponentClass<Omit<RouteComponentProps<an
     const [country, setCountry] = useState<string | { value: string, label: string }>(prevProf[num].country)
     const [companyDescription, setCompanyDescription] = useState<string>(prevProf[num].companyDescription)
     const [section, setSection] = useState<any>(JSON.parse(prevProf[num].sections));
-    const [Documents, setDocument] = useState<any>(props.documents);
+    const [Documents, setDocument] = useState<any>(documents);
 
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -107,7 +108,7 @@ export const ProfileEdit: any | React.ComponentClass<Omit<RouteComponentProps<an
             form_data.append('country', country);
         }
         form_data.append('owner', String(props.userID));
-        const id = props.userID
+        const id = prevProf[num].id
         props.updateManufacturer(form_data, id)
 
         Documents.forEach((e: {
@@ -115,14 +116,14 @@ export const ProfileEdit: any | React.ComponentClass<Omit<RouteComponentProps<an
             Title: string,
             Thumbnail: string,
             Download: string,
-            owner: number
+            profile: number
         }, index: number) => {
             let form_doc_data = new FormData();
             form_doc_data.append('Title', e.Title);
             Documents[index].Thumbnail.name && form_doc_data.append('Thumbnail', e.Thumbnail);
             Documents[index].Download.name && form_doc_data.append("Download", e.Download)
-            form_doc_data.append('owner', String(props.userID));
-            props.updateDocument(form_doc_data, (props.documents[index].id) - 1)
+            form_doc_data.append('profile', String(prevProf[num].id));
+            props.updateDocument(form_doc_data, (Documents[index].id))
         })
 
 
@@ -234,7 +235,7 @@ export const ProfileEdit: any | React.ComponentClass<Omit<RouteComponentProps<an
     };
 
     const handleRemoveClick2 = (index: number) => {
-        profileAPI.DeleteDocuments((Documents[index].id) - 1)
+        profileAPI.DeleteDocuments((documents[index].id))
         const list = [...Documents];
         list.splice(index, 1);
         setDocument(list);
@@ -245,8 +246,8 @@ export const ProfileEdit: any | React.ComponentClass<Omit<RouteComponentProps<an
     };
 
     const handleAddClick2 = () => {
-        props.postDocument(props.userID)
-        setDocument([...Documents, {Title: "", Thumbnail: "", Download: ""}])
+        props.postDocument(prevProf[num].id)
+        setDocument([...Documents, {Title: "", Thumbnail: "", Download: "", id: (props.documents[props.documents.length-1].id+1)}])
 
 
     };
@@ -335,7 +336,7 @@ export const ProfileEdit: any | React.ComponentClass<Omit<RouteComponentProps<an
                                 <input className='form-control' placeholder="Title" name="Title" value={y.Title}
                                        onChange={e => DocumentedInputChange(e, i)}/>
 
-                                <Thumbs documents={props.documents} userID={props.userID} index={i}/>
+                                <Thumbs documents={documents} userID={props.userID} index={i}/>
 
                                 <CustomDropZone name="Thumbnail" label="Thumbnail" AllowButton={0}
                                                 onDrop={(acceptedFiles: any) => DocumenthandleInputFileThumbnail(acceptedFiles, i)}
@@ -353,8 +354,13 @@ export const ProfileEdit: any | React.ComponentClass<Omit<RouteComponentProps<an
                                     }}>Add 1 Document</button>}
                                 </div>
                             </div>
+
                         )
                     })}
+                    {Documents.length === 0 &&
+                                    <button type="button" className="btn btn-outline-primary" onClick={() => {
+                                        handleAddClick2()
+                                    }}>Add 1 Document</button>}
                     <button className={s.button} type={"submit"}>Submit</button>
                 </div>
             </form>

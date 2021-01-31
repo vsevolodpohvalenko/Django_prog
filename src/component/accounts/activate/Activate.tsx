@@ -1,12 +1,12 @@
 import React from 'react'
-import { SmileOutlined, SmileFilled } from '@ant-design/icons'
+
 import {Typography} from "antd";
 import icon1 from '../../../media/dot-com.jpg'
 import icon2 from '../../../media/logo-social.png'
 
 export const Activate = (props: any) => {
 
-    const { Paragraph } = Typography
+    
     return(<div>
             <img style={{display: "none"}} src={icon1}/>
             <img style={{display: "none"}} src={icon2}/>

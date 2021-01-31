@@ -9,7 +9,7 @@ import {AppStateType} from "../../../redux/redux_store";
 import {getCookie} from "../Register/register";
 
 type RootPropsType = {
-    ActivateUser: (body: {uid: string|number, token: number|string}, csrftoken: string| null) => void
+    ActivateUser: (body: {uid: string|number, token: number|string}, csrftoken: string| null) => any
 }
 
 class ActivateContainer extends React.PureComponent<RootPropsType & RouteComponentProps> {
@@ -19,8 +19,7 @@ class ActivateContainer extends React.PureComponent<RootPropsType & RouteCompone
         const body = {
             uid:(this.props.match as any).params.uid,
             token: (this.props.match as any).params.token}
-        this.props.ActivateUser(body, this.csrftoken)
-
+        this.props.ActivateUser(body, this.csrftoken).then((response: any) => this.props.history.push('/new_company'))
     }
     render () {
         return (<div><Activate  /></div>)
@@ -29,6 +28,7 @@ class ActivateContainer extends React.PureComponent<RootPropsType & RouteCompone
 
 const mapStateToProps = (state:AppStateType) => ({
     indicate: state.auth.activated
+
 })
 
 export default compose( withRouter,connect(mapStateToProps, {login, ActivateUser}))(ActivateContainer)

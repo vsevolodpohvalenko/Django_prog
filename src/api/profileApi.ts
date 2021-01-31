@@ -57,11 +57,11 @@ export const profileAPI = {
         id: number,
         owner: number
     }, id: number) => {
-        return instance.patch<SingleDocument>(`Document/${id + 1}/`, form_data, config2)
+        return instance.patch<SingleDocument>(`Document/${id}/`, form_data, config2)
     },
     PostDocuments: (id: any) => {
         let form_data = new FormData();
-        form_data.append('owner', String(id));
+        form_data.append('profile', String(id));
         return instance.post<SingleDocument>(`Document/`, form_data, config2)
     },
     DeleteDocuments: (id: number) => {

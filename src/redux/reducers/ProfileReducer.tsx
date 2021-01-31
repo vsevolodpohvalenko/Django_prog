@@ -190,6 +190,7 @@ export const updateManufacturer = (data: any, id: number) => async (dispatch: Di
         })
 }
 export const updateDocument = (data: any, id: number) => async (dispatch: Dispatch<ProfileActionTypes>) => {
+    debugger
     await profileAPI.PatchDocuments(data, id)
     dispatch({
         type: CREATE_MESSAGE,

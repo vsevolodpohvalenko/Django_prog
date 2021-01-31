@@ -3,7 +3,7 @@ import {CREATE_MESSAGE, createMessage} from "./MessageReducer";
 import {Dispatch} from "redux";
 import {AppStateType, InferActionsTypes} from "../redux_store";
 import {ThunkAction} from "redux-thunk";
-import {profileAPI} from "../../api/profileApi";
+import {Redirect, useHistory} from "react-router-dom";
 import {authAPI} from "../../api/AuthApi";
 
 export type GetStateType = () => AppStateType
@@ -146,38 +146,42 @@ export const register = (dataR: {csrf_token: string, email: string, first_name: 
     }
     dispatch(actions.loadUserSuccess)
 }
-export const ActivateUser = (body: any, csrftoken: string): ThunkAction<Promise<void>, AppStateType, unknown, AuthActionTypes> => async (dispatch, getState) => {
-    debugger
-    const body1 = {
-        email: localStorage.getItem('email'),
-        password: localStorage.getItem('password')}
-    try {
-        const  response1 = await authAPI.activate(body)
-        dispatch(actions.activatedSuccessful(response1.data))
-        dispatch(actions.loadUserSuccess());
+export const ActivateUser = (body: any, csrftoken: string): ThunkAction<Promise<void>, AppStateType, unknown, AuthActionTypes> => {
+    return async (dispatch, getState) => {
         debugger
-        let response = await authAPI.login(body1, csrftoken)
-        debugger
-        dispatch(actions.loginSuccess(response.data))
-        dispatch({
-            type: CREATE_MESSAGE,
-            payload: {log_in_ed: "Logged successful"}})
-        const res = await authAPI.getUser(tokenConfig(getState))
-        dispatch(actions.getUserSuccess(res.data));
-
-
-    } catch (err) {
-        const errors = {
-            msg: err.response.data,
-            status: err.response.status
+        const body1 = {
+            email: localStorage.getItem('email'),
+            password: localStorage.getItem('password')
         }
-        dispatch({
-            type: GET_ERRORS,
-            payload: errors
-        })
+        try {
+            const response1 = await authAPI.activate(body)
+            dispatch(actions.activatedSuccessful(response1.data))
+            dispatch(actions.loadUserSuccess());
+            debugger
+            let response = await authAPI.login(body1, csrftoken)
+            debugger
+            dispatch(actions.loginSuccess(response.data))
+            dispatch({
+                type: CREATE_MESSAGE,
+                payload: {log_in_ed: "Logged successful"}
+            })
+            const res = await authAPI.getUser(tokenConfig(getState))
+            dispatch(actions.getUserSuccess(res.data));
 
 
-    }
+        } catch (err) {
+            const errors = {
+                msg: err.response.data,
+                status: err.response.status
+            }
+            dispatch({
+                type: GET_ERRORS,
+                payload: errors
+            })
+
+
+        }
+    };
 }
 
 export const tokenConfig = (getState: GetStateType) => {

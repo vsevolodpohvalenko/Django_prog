@@ -30,11 +30,7 @@ const mapStateToProps = (state: AppStateType) => {
         sections: string,
         owner: number
     }) => e.owner === state.auth.user.id),
-        my_documents: state.profile.documents.filter((e:{        id: number,
-        Title: string,
-        Thumbnail: string,
-        Download: string,
-        owner: number}) => e.owner === state.auth.user.id)
+        my_documents: state.profile.documents
     }
 }
 
