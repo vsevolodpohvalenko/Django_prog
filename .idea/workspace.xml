@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d5115415-a259-4235-b5f1-8de4f5639f87" name="Default Changelist" comment="" />
+    <list default="true" id="d5115415-a259-4235-b5f1-8de4f5639f87" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/profileApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/profileApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/accounts/Profile/ProfileEdit/Document.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/accounts/Profile/ProfileEdit/Document.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/accounts/Profile/ProfileEdit/ProfileEdit.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/accounts/Profile/ProfileEdit/ProfileEdit.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/requestForProposals/requestForProposals.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/requestForProposals/requestForProposals.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/ProfileReducer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/ProfileReducer.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -120,7 +128,7 @@
       <workItem from="1612003758504" duration="37745000" />
       <workItem from="1612108642875" duration="721000" />
       <workItem from="1612113833285" duration="27000" />
-      <workItem from="1612113870564" duration="4429000" />
+      <workItem from="1612113870564" duration="7478000" />
     </task>
     <task id="LOCAL-00001" summary="Extra update">
       <created>1608062295835</created>

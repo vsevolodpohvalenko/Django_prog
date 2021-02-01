@@ -2,6 +2,7 @@ import axios, {AxiosPromise} from "axios";
 import {CategoriesType} from "../component/accounts/Profile/ProfileEdit/ProfileEditContainer";
 import {RequestForProposals} from "../Frequently_used_types";
 import {config2} from "../api";
+import {getCookie} from "../component/accounts/Register/register";
 
 type SingleDocument = {
         id: number,
@@ -46,9 +47,14 @@ export const profileAPI = {
        id: number,
         owner: number,
         sections: string
-    }, id: number) => {
+    }, id: number, csrftoken: string) => {
         debugger
-       return instance.patch<SingleProfile>(`CompanyProfilePage/${id}/`, form_data, config2)
+       return instance.patch<SingleProfile>(`CompanyProfilePage/${id}/`, form_data, {
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken,
+
+            }})
     },
     PatchDocuments: (form_data: {
         Download: string,
@@ -56,16 +62,31 @@ export const profileAPI = {
         Title: string,
         id: number,
         owner: number
-    }, id: number) => {
-        return instance.patch<SingleDocument>(`Document/${id}/`, form_data, config2)
+    }, id: number, csrftoken:string) => {
+        return instance.patch<SingleDocument>(`Document/${id}/`, form_data, {
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken,
+
+            }})
     },
-    PostDocuments: (id: any) => {
+    PostDocuments: (id: any, csrftoken:string|null) => {
         let form_data = new FormData();
         form_data.append('profile', String(id));
-        return instance.post<SingleDocument>(`Document/`, form_data, config2)
+        return instance.post<SingleDocument>(`Document/`, form_data, {
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken,
+
+            }})
     },
-    DeleteDocuments: (id: number) => {
-        return instance.delete<AxiosPromise>(`Document/${id + 1}/`)
+    DeleteDocuments: (id: number, csrftoken:string|null) => {
+        return instance.delete<AxiosPromise>(`Document/${id}/`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken,
+
+            }})
     },
     getCountries: () => {
         debugger
@@ -85,8 +106,13 @@ export const profileAPI = {
         debugger
         return instance.get<Array<SingleProfile>>(`CompanyProfilePage?search=${search}`)
     },
-    postRequestForProposals: (request: any) => {
-        return instance.post<Array<RequestForProposals>>('RequestForProposals/', request)
+    postRequestForProposals: (request: any, csrftoken:string| null) => {
+        return instance.post<Array<RequestForProposals>>('RequestForProposals/', request, {
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken,
+
+            }})
     },
     getPaymentMethods: () => {
         return instance.get('PaymentMethods/')

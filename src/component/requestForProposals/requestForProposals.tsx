@@ -17,6 +17,22 @@ import store from "../../redux/redux_store";
 import {createMessage} from "../../redux/reducers/MessageReducer";
 
 
+export function getCookie(name:any) {
+            debugger
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
 type TextPropsType = {
     element: string,
     type?: string,
@@ -136,6 +152,7 @@ export const RequestForProposals = (Currency: any) => {
     const [payment_method, setPayment_method] = useState<string>("")
     const [privacy_policy, setPrivacy_policy] = useState<boolean>(false)
     const history = useHistory()
+    const csrftoken = getCookie('csrftoken');
     const HandleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         let form_data = new FormData();
@@ -149,7 +166,7 @@ export const RequestForProposals = (Currency: any) => {
         form_data.append("destinationPort", destinationPort)
         form_data.append("paymentMethod", payment_method)
         form_data.append("iAgree", String(privacy_policy))
-        profileAPI.postRequestForProposals(form_data).then(() => {
+        profileAPI.postRequestForProposals(form_data, csrftoken).then(() => {
             history.push('/')
             store.dispatch(createMessage({log_in_ed: "Request was submitted"}))
         })

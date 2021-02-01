@@ -2,6 +2,7 @@ import React, {ChangeEvent, FormEvent, useState} from "react";
 import Dropzone from "react-dropzone";
 import s from './ProfileEdit.module.css'
 import {profileAPI} from "../../../../api/profileApi";
+import {getCookie} from "../../Register/register";
 
 type InputTextPropsType = {
   element: string,
@@ -65,7 +66,7 @@ export const Document = () => {
   const [DocumentThumbnail, setDocumentThumbnail] = useState<Array<any>>([]);
   const [DocumentTitle, setDocumentTitle] = useState<string>('')
   const [DocumentDownload, setDocumentDownload] = useState<Array<any>>([])
-
+  const csrftoken = getCookie('csrftoken');
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     debugger
@@ -73,7 +74,7 @@ export const Document = () => {
     form_data_document.append('Thumbnail', DocumentThumbnail[0], DocumentThumbnail[0].name);
     form_data_document.append('Download', DocumentDownload[0], DocumentDownload[0].name);
     form_data_document.append('Title', DocumentTitle);
-    profileAPI.PostDocuments(form_data_document)
+    profileAPI.PostDocuments(form_data_document, csrftoken)
 
   }
 

@@ -9,6 +9,7 @@ import {profileAPI} from "../../../../api/profileApi";
 import {Input} from "antd"
 import Preloader from "../../../Preloader/preloader";
 import {RouteComponentProps, withRouter, WithRouterProps, WithRouterStatics} from "react-router";
+import {getCookie} from "../../Register/register";
 
 type InputProps = {
     element: string,
@@ -92,7 +93,7 @@ export const ProfileEdit: any | React.ComponentClass<Omit<RouteComponentProps<an
     const [section, setSection] = useState<any>(JSON.parse(prevProf[num].sections));
     const [Documents, setDocument] = useState<any>(documents);
 
-
+    const csrftoken = getCookie('csrftoken');
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
@@ -109,7 +110,7 @@ export const ProfileEdit: any | React.ComponentClass<Omit<RouteComponentProps<an
         }
         form_data.append('owner', String(props.userID));
         const id = prevProf[num].id
-        props.updateManufacturer(form_data, id)
+        props.updateManufacturer(form_data, id, csrftoken)
 
         Documents.forEach((e: {
             id: number,
@@ -123,7 +124,7 @@ export const ProfileEdit: any | React.ComponentClass<Omit<RouteComponentProps<an
             Documents[index].Thumbnail.name && form_doc_data.append('Thumbnail', e.Thumbnail);
             Documents[index].Download.name && form_doc_data.append("Download", e.Download)
             form_doc_data.append('profile', String(prevProf[num].id));
-            props.updateDocument(form_doc_data, (Documents[index].id))
+            props.updateDocument(form_doc_data, (Documents[index].id), csrftoken)
         })
 
 
@@ -235,7 +236,7 @@ export const ProfileEdit: any | React.ComponentClass<Omit<RouteComponentProps<an
     };
 
     const handleRemoveClick2 = (index: number) => {
-        profileAPI.DeleteDocuments((documents[index].id))
+        profileAPI.DeleteDocuments((Documents[index].id), csrftoken)
         const list = [...Documents];
         list.splice(index, 1);
         setDocument(list);
@@ -246,7 +247,7 @@ export const ProfileEdit: any | React.ComponentClass<Omit<RouteComponentProps<an
     };
 
     const handleAddClick2 = () => {
-        props.postDocument(prevProf[num].id)
+        props.postDocument(prevProf[num].id, csrftoken)
         setDocument([...Documents, {Title: "", Thumbnail: "", Download: "", id: (props.documents[props.documents.length-1].id+1)}])
 
 

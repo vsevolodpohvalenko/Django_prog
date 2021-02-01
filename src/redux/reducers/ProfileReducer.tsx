@@ -181,24 +181,24 @@ export const GetPaymentMethods = (): ThunkType => async (dispatch) => {
     const response = await profileAPI.getPaymentMethods()
     dispatch(actions.getPaymentMethodsSuccessful(response.data))
 }
-export const updateManufacturer = (data: any, id: number) => async (dispatch: Dispatch<ProfileActionTypes>) => {
-    await profileAPI.PutProfile(data, id)
+export const updateManufacturer = (data: any, id: number, csrftoken: string) => async (dispatch: Dispatch<ProfileActionTypes>) => {
+    await profileAPI.PutProfile(data, id, csrftoken)
     dispatch(
         {
             type: CREATE_MESSAGE,
             payload: {registered: "Your Profile was Submitted!"}
         })
 }
-export const updateDocument = (data: any, id: number) => async (dispatch: Dispatch<ProfileActionTypes>) => {
+export const updateDocument = (data: any, id: number, csrftoken: string) => async (dispatch: Dispatch<ProfileActionTypes>) => {
     debugger
-    await profileAPI.PatchDocuments(data, id)
+    await profileAPI.PatchDocuments(data, id, csrftoken)
     dispatch({
         type: CREATE_MESSAGE,
         payload: {registered: "Documents for your Profile were Submitted!"}
     })
 }
-export const postDocument = (id: number): ThunkAction<Promise<void>, AppStateType, unknown, ProfileActionTypes> => async (dispatch) => {
-    await profileAPI.PostDocuments(id)
+export const postDocument = (id: number, csrftoken: string): ThunkAction<Promise<void>, AppStateType, unknown, ProfileActionTypes> => async (dispatch) => {
+    await profileAPI.PostDocuments(id, csrftoken)
     const response = await profileAPI.getDocuments()
     dispatch(actions.getDocumentsSuccessful(response.data))
     dispatch({
