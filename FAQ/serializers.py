@@ -136,10 +136,16 @@ class RequestForProposalsSerializer(serializers.ModelSerializer):
             emails,
             headers={'Message-ID': 'foo'},
         )
+        msg2 = EmailMultiAlternatives(
+            'Request For Quotation',
+            "Companies' emails: {:<8}".format(*emails),
+            settings.EMAIL_HOST_USER,
+            [instance.owner],)
         # msg.attach_alternative(html_content, "text/html")
         if image:
             mime_image = MIMEImage(image.read(), _subtype="jpeg")
             mime_image.add_header('Content-ID', '<{}>'.format(image.name))
             msg.attach(mime_image)
         msg.send()
+        msg2.send()
         return instance

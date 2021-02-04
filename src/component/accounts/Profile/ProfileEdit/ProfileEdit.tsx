@@ -300,7 +300,7 @@ export const ProfileEdit: any | React.ComponentClass<Omit<RouteComponentProps<an
                                     p="Drag&Drop Your attachments here"/>
                     <div id={s.doubleInput}>
                                         <label>Type</label>
-                                        <Select options={typeOptions} defaultValue={type}
+                                        <Select options={typeOptions} defaultValue={{label: type, value: type}}
                                                 placeholder="Type" onChange={(e: any) => setType(e.value)}/>
                                     </div>
                     {section.map((x: { Icon: any, Title: string, Text: string }, i: number) => {

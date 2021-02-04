@@ -121,7 +121,8 @@ class NewCompanyProfile extends React.Component {
                 CompanyDescriptions: CompanyDescriptions,
                 ProductType: ProductType,
                 section: section,
-                owner: owner
+                owner: owner,
+                type: type
             }).then(r => history.push('/'),
                 this.props.createMessage({log_in_ed: "New Company's Profile was created"}))
         }
