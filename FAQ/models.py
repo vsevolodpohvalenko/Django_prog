@@ -123,7 +123,8 @@ class RequestForProposals(models.Model):
     preferredUntilPrice = models.CharField(max_length=100)
     preferredShippingAgreement = models.CharField(max_length=100)
     destinationPort = models.CharField(max_length=255, default="Virginia")
-    paymentMethod = models.TextField()
+    paymentMethod = models.TextField(default="Google Pay")
+    email = models.EmailField(default="vsevolod.pohvalenko@gmail.com")
     iAgree = models.CharField(max_length=10)
 
 

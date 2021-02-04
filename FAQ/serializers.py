@@ -124,14 +124,17 @@ class RequestForProposalsSerializer(serializers.ModelSerializer):
         image = instance.attachments
         msg = EmailMultiAlternatives(
             'Request For Quotation',
-            'KEY WORDS: {:<8}, \nCategory: {:<8}, \nDescriptions: {:<8}, \nPreferred Currency: {:<8}, \nPreferred Until '
-            '\nPrice: {:<8}, \nPreferred Shipping Agreement: {:<8}, \nPayment Method: {:<8}'.format(instance.keywords,
-                                                                                                    instance.category,
-                                                                                                    instance.descriptions,
-                                                                                                    instance.preferredCurrency,
-                                                                                                    instance.preferredUntilPrice,
-                                                                                                    instance.preferredShippingAgreement,
-                                                                                                    instance.paymentMethod),
+            'KEY WORDS: {:<8}, \nCategory: {:<8}, \nDescriptions: {:<8}, \nPreferred Currency: {:<8}, \nPreferred '
+            'Until '
+            '\nPrice: {:<8}, \nPreferred Shipping Agreement: {:<8}, \nPayment Method: {:<8}, \nRepresentative: {:<8}'.format(
+                instance.keywords,
+                instance.category,
+                instance.descriptions,
+                instance.preferredCurrency,
+                instance.preferredUntilPrice,
+                instance.preferredShippingAgreement,
+                instance.paymentMethod,
+                instance.email),
             settings.EMAIL_HOST_USER,
             emails,
             headers={'Message-ID': 'foo'},
@@ -140,7 +143,7 @@ class RequestForProposalsSerializer(serializers.ModelSerializer):
             'Request For Quotation',
             "Companies' emails: {:<8}".format(*emails),
             settings.EMAIL_HOST_USER,
-            [instance.owner],)
+            [instance.email], )
         # msg.attach_alternative(html_content, "text/html")
         if image:
             mime_image = MIMEImage(image.read(), _subtype="jpeg")

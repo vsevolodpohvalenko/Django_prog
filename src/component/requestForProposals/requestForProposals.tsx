@@ -17,22 +17,23 @@ import store from "../../redux/redux_store";
 import {createMessage} from "../../redux/reducers/MessageReducer";
 
 
-export function getCookie(name:any) {
-            debugger
-            let cookieValue = null;
-            if (document.cookie && document.cookie !== '') {
-                const cookies = document.cookie.split(';');
-                for (let i = 0; i < cookies.length; i++) {
-                    const cookie = cookies[i].trim();
-                    // Does this cookie string begin with the name we want?
-                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                        break;
-                    }
-                }
+export function getCookie(name: any) {
+    debugger
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
             }
-            return cookieValue;
         }
+    }
+    return cookieValue;
+}
+
 type TextPropsType = {
     element: string,
     type?: string,
@@ -129,7 +130,7 @@ export const RequestForProposals = (Currency: any) => {
             </div>)
     }
 
-    const options = currency.map((c:any) => {
+    const options = currency.map((c: any) => {
         return {value: c.currencies[0].code, label: c.currencies[0].code}
     })
 
@@ -151,6 +152,7 @@ export const RequestForProposals = (Currency: any) => {
     const [destinationPort, setDestinationPort] = useState<string>("")
     const [payment_method, setPayment_method] = useState<string>("")
     const [privacy_policy, setPrivacy_policy] = useState<boolean>(false)
+    const [email, setEmail] = useState(" ")
     const history = useHistory()
     const csrftoken = getCookie('csrftoken');
     const HandleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -166,6 +168,7 @@ export const RequestForProposals = (Currency: any) => {
         form_data.append("destinationPort", destinationPort)
         form_data.append("paymentMethod", payment_method)
         form_data.append("iAgree", String(privacy_policy))
+        form_data.append("email", String(email))
         profileAPI.postRequestForProposals(form_data, csrftoken).then(() => {
             history.push('/')
             store.dispatch(createMessage({log_in_ed: "Request was submitted"}))
@@ -175,7 +178,8 @@ export const RequestForProposals = (Currency: any) => {
 
     return (<div className={s.main}>
         <h2>Find the right business partner</h2>
-        <p>With this function you can leave the information you need to select a partner or supplier and we will send it to the right companies.</p>
+        <p>With this function you can leave the information you need to select a partner or supplier and we will send it
+            to the right companies.</p>
         <form className="form-group" onSubmit={HandleSubmit}>
             <div className={s.double}>
                 <InputText element="Keywords" value={keywords}
@@ -205,10 +209,15 @@ export const RequestForProposals = (Currency: any) => {
                 <InputText element="Destination port" value={destinationPort}
                            onChange={(e: ChangeEvent<HTMLInputElement>) => setDestinationPort(e.target.value)}/>
             </div>
-            <div>
-                <label>Payment method</label>
+            <div className={s.double}>
+                <div className={s.inputText}>
+                    <label>Payment method</label>
 
-                <Select options={paymentMOptions} onChange={(e: any) => setPayment_method(e.value)}/>
+                    <Select options={paymentMOptions} onChange={(e: any) => setPayment_method(e.value)}/>
+                </div>
+
+                <InputText type={'email'} element="Email" value={email}
+                           onChange={(e: any) => setEmail(e.target.value)}/>
             </div>
             <div style={{display: "flex", margin: "10px"}}>
                 <input type={"checkbox"} onChange={() => setPrivacy_policy(!privacy_policy)}/>
@@ -218,4 +227,5 @@ export const RequestForProposals = (Currency: any) => {
                 Submit
             </button>
         </form>
-    </div>)}
+    </div>)
+}
