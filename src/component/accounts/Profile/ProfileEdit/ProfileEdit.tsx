@@ -81,6 +81,9 @@ export const ProfileEdit: any | React.ComponentClass<Omit<RouteComponentProps<an
     const categoryOptions = props.category.map((c:any) => {
         return {value: c.Name, label: c.Name}
     })
+    const typeOptions = props.type.map((c:any) => {
+        return {value: c.Name, label: c.Name}
+    })
     const num = Number(props.match.params.num)-1
     debugger
     const documents = props.documents.filter((e:any) => e.profile === prevProf[num].id)
@@ -92,6 +95,7 @@ export const ProfileEdit: any | React.ComponentClass<Omit<RouteComponentProps<an
     const [companyDescription, setCompanyDescription] = useState<string>(prevProf[num].companyDescription)
     const [section, setSection] = useState<any>(JSON.parse(prevProf[num].sections));
     const [Documents, setDocument] = useState<any>(documents);
+    const [type, setType] = useState<any>(prevProf[num].type);
 
     const csrftoken = getCookie('csrftoken');
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -103,6 +107,8 @@ export const ProfileEdit: any | React.ComponentClass<Omit<RouteComponentProps<an
         form_data.append("sections", JSON.stringify(section))
         form_data.append('companyName', companyName);
         form_data.append('companyDescription', companyDescription);
+        form_data.append('type', type.toLowerCase())
+
         if (typeof country !== "string") {
             form_data.append('country', country.value);
         } else {
@@ -292,7 +298,11 @@ export const ProfileEdit: any | React.ComponentClass<Omit<RouteComponentProps<an
                         <img style={img} src={companyLogo}/>)}
                     <CustomDropZone label="Company Logo" AllowButton={1} onDrop={handleDrop4}
                                     p="Drag&Drop Your attachments here"/>
-
+                    <div id={s.doubleInput}>
+                                        <label>Type</label>
+                                        <Select options={typeOptions} defaultValue={type}
+                                                placeholder="Type" onChange={(e: any) => setType(e.value)}/>
+                                    </div>
                     {section.map((x: { Icon: any, Title: string, Text: string }, i: number) => {
                         return (
                             <div key={i}>
@@ -304,7 +314,7 @@ export const ProfileEdit: any | React.ComponentClass<Omit<RouteComponentProps<an
                                                onChange={e => SectionhandleInputChange(e.target, i)}/>
                                     </div>
                                     <div id={s.doubleInput}>
-                                        <label>Icon</label>
+                                        <label>Sphere</label>
                                         <Select options={categoryOptions} defaultValue={{label: x.Icon, value: x.Icon}}
                                                 placeholder="Icon" onChange={(e: any) => SectionhandleInputChange({
                                             name: "Icon",

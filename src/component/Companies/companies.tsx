@@ -30,6 +30,7 @@ type RootProps = {
     profiles: ProfileType,
     categories: CategoriesType,
     countries: any,
+    type: Array<{ Name: string }>
 
 }
 export const Companies = (props: RootProps) => {
@@ -43,6 +44,7 @@ export const Companies = (props: RootProps) => {
 
     const [activeCountries, setActiveCountries] = useState<boolean>(false)
     const [activeCategories, setActiveCategories] = useState<boolean>(false)
+    const [activeType, setActiveType] = useState<boolean>(false)
     const [search, setSearch] = useState<Array<string>>([])
     const [filter, setFilter] = useState<boolean>(false)
 
@@ -54,36 +56,34 @@ export const Companies = (props: RootProps) => {
 
     const Check = (e: any) => {
         debugger
-        const checkBox: null | HTMLInputElement | any= document.getElementById(`check${e}`);
+        const checkBox: null | HTMLInputElement | any = document.getElementById(`check${e}`);
 
-      if (checkBox.checked)
-        {
+        if (checkBox.checked) {
             const Actual = [...search, e]
             setSearch(Actual)
-            props.GetSearchedData(Actual.join())}
-        else {
+            props.GetSearchedData(Actual.join())
+        } else {
             const Actual = search.filter(element => element !== e)
             setSearch(Actual)
-            search.length !== 0 ? props.GetSearchedData(Actual.join()) : props.GetSearchedData("")}
+            search.length !== 0 ? props.GetSearchedData(Actual.join()) : props.GetSearchedData("")
+        }
 
     }
-    const  SearchButton1 = (name: string) => {
+    const SearchButton1 = (name: string) => {
         debugger
         const checkBox: any = document.getElementById(`check${name}`);
-        if (checkBox.checked)
-        {
+        if (checkBox.checked) {
             setSearch([...search, name])
-        }
-        else {
+        } else {
             setSearch(search.filter(e => e !== name))
         }
     }
 
-    const  SearchButton2 = () => {
+    const SearchButton2 = () => {
         props.GetSearchedData(search.join())
         setFilter(false)
     }
-    const  ClearAll = () => {
+    const ClearAll = () => {
         debugger
         search.forEach(e => {
             const checkBox: any = document.getElementById(`check${e}`)
@@ -91,23 +91,42 @@ export const Companies = (props: RootProps) => {
         })
         setSearch([])
     }
-    return(
+    return (
         <div className={s.main}>
-            <button onClick={ ()=>  setFilter(true)} className={s.sort}>Sort Results</button>
-            <div className={cn({[s.active] : filter}, s.filter)}>
+            <button onClick={() => setFilter(true)} className={s.sort}>Sort Results</button>
+            <div className={cn({[s.active]: filter}, s.filter)}>
                 <div className={s.filter_inner}>
                     <div className={s.buttons}>
-                    <h3 onClick={()=> setFilter(false)}>Close</h3> <h3 onClick={() => ClearAll()}>Clear All</h3><h3 onClick={() => SearchButton2()}>Apply</h3>
+                        <h3 onClick={() => setFilter(false)}>Close</h3> <h3 onClick={() => ClearAll()}>Clear All</h3><h3
+                        onClick={() => SearchButton2()}>Apply</h3>
                     </div>
-                <h2>Sort results by</h2>
-                <input type={"text"} onChange={(e) => Search(e.target.value)} placeholder={"Search keywords"} className={s.input}/>
-                <div className={s.title}><h3>Category</h3> <div className={cn({[s.active]: activeCategories}, s.skip)} onClick={() => setActiveCategories(!activeCategories)}/></div>
-                {props.categories.map(c => (
-                    <div className={cn({[s.active] : activeCategories}, s.select)} key={c.id}>
-                        <h6 >{c.Name}</h6>
-                        <input onClick={()  =>  !filter ? Check(c.Name) : SearchButton1(c.Name)} type={"checkbox"} id={`check${c.Name}`} className={s.checkbox}/>
+                    <h2>Sort results by</h2>
+                    <input type={"text"} onChange={(e) => Search(e.target.value)} placeholder={"Search keywords"}
+                           className={s.input}/>
+                    <div className={s.title}><h3>Category</h3>
+                        <div className={cn({[s.active]: activeCategories}, s.skip)}
+                             onClick={() => setActiveCategories(!activeCategories)}/>
                     </div>
-                ))}
+
+                    {props.categories.map(c => (
+                        <div className={cn({[s.active]: activeCategories}, s.select)} key={c.id}>
+                            <h6>{c.Name}</h6>
+                            <input onClick={() => !filter ? Check(c.Name) : SearchButton1(c.Name)} type={"checkbox"}
+                                   id={`check${c.Name}`} className={s.checkbox}/>
+                        </div>
+                    ))}
+                    <div className={s.title}><h3>Purpose</h3>
+                        <div className={cn({[s.active]: activeType}, s.skip)}
+                             onClick={() => setActiveType(!activeType)}/>
+                    </div>
+                    {props.type.map((c, id) => (
+                        <div className={cn({[s.active]: activeType}, s.select)} key={id}>
+                            <h6>{c.Name}</h6>
+                            <input onClick={() => !filter ? Check(c.Name) : SearchButton1(c.Name)} type={"checkbox"}
+                                   id={`check${c.Name}`} className={s.checkbox}/>
+                        </div>
+                    ))}
+
                     <div className={s.title}><h3>Country</h3>
                         <div className={cn({[s.active]: activeCountries}, s.skip)}
                              onClick={() => setActiveCountries(!activeCountries)}/>

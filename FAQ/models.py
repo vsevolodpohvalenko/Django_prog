@@ -46,6 +46,7 @@ class CompanyProfilePage(models.Model):
     country = models.CharField(max_length=200, blank=True, default="Undefined")
     companyLogo = models.ImageField(default='logo-social.png', upload_to=upload_path)
     sections = models.TextField(default="[{""}]")
+    type = models.CharField(default="supplier", max_length=256)
 
     def __str__(self):
         return self.companyName

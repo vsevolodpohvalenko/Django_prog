@@ -42,7 +42,8 @@ class NewCompanyProfile extends React.Component {
         CompanyDescriptions: '',
         ProductType: '',
         ProductDescriptions: '',
-        logo: ''
+        logo: '',
+        type: ""
 
     }
 
@@ -54,6 +55,10 @@ class NewCompanyProfile extends React.Component {
     onChange_1 = e => {
         debugger
         this.setState({["ProductType"]: e.value})
+    }
+    onChange_2 = e => {
+        debugger
+        this.setState({["type"]: e.value})
     }
 
     render() {
@@ -96,6 +101,8 @@ class NewCompanyProfile extends React.Component {
 
         }
 
+        const typeOptions = [{value: 'Dealer', label: 'Dealer'}, {value: 'Supplier', label: 'Supplier'}]
+
         const categoryOptions = this.props.categories.map(c => {
             return {value: c.Name, label: c.Name}
         })
@@ -123,7 +130,7 @@ class NewCompanyProfile extends React.Component {
         //     return <Redirect to="/"/>
         // }
 
-        const {CompanyName, CompanyDescriptions, ProductType, ProductDescriptions} = this.state
+        const {CompanyName, CompanyDescriptions, ProductType, ProductDescriptions, type} = this.state
         let CustomSelect = (props) => {
             return (
                 <div className={s.customSelect}>
@@ -164,7 +171,7 @@ class NewCompanyProfile extends React.Component {
                         </div>
                         <div className="form-group">
                             <CustomSelect value={{label: ProductType, value: ProductType}} label="Product Type"
-                                          name="ProductType" options={categoryOptions}
+                                          name="Type" options={categoryOptions}
 
                                           onChange={this.onChange_1}/>
                         </div>
@@ -177,6 +184,12 @@ class NewCompanyProfile extends React.Component {
                                 onChange={this.onChange}
                                 value={ProductDescriptions}
                             />
+                        </div>
+                        <div className="form-group">
+                            <CustomSelect value={{label: type, value: type}} label="What you company is"
+                                          name="ProductType" options={typeOptions}
+
+                                          onChange={this.onChange_2}/>
                         </div>
                         <div className="form-group">
                             <button type="submit" className={s.button}>

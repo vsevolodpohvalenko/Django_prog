@@ -33,11 +33,13 @@ export type initialStateType = {
         Download: string,
         owner: number
     }> | any,
-    category: any
+    category: any,
+    type : Array<{ Name:string }>
 }
 
 export let initialState: initialStateType = {
     profiles: [{id: 0}],
+    type: [{Name: 'Dealer'}, {Name: "Supplier"}],
     countries: [{
         name: "Afghanistan",
         alpha2Code: "AF",

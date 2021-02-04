@@ -19,7 +19,7 @@ class CompaniesContainer extends PureComponent<PropsReduxType> {
         return (
             <div>
                 <Header/>
-                <Companies profiles={this.props.profiles} GetSearchedData={this.props.GetSearchedData}
+                <Companies type={this.props.type} profiles={this.props.profiles} GetSearchedData={this.props.GetSearchedData}
                            categories={this.props.categories} countries={this.props.countries}/>
                 <Footer/>
             </div>
@@ -32,7 +32,8 @@ const mapStateToProps= (state:AppStateType) => {
     return{
         profiles: state.profile.profiles,
         countries: state.profile.countries,
-        categories: state.profile.category
+        categories: state.profile.category,
+        type: state.profile.type
     }
 }
 const connector = connect(mapStateToProps, {GetCountries, GetSearchedData, GetCategory, GetProfiles})

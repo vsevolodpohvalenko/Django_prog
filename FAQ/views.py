@@ -14,7 +14,7 @@ class CompanyProfilePageViewSet(ListAPIView):
     serializer_class = CompanyProfilePageSerializer
 
     filter_backends = (SearchFilter, OrderingFilter)
-    search_fields = ('country', 'companyName', 'companyDescription', 'owner__first_name', "sections")
+    search_fields = ('country', 'companyName', 'companyDescription', 'owner__first_name', "sections", 'type')
 
 
 class LinksViewSet(ListAPIView):
