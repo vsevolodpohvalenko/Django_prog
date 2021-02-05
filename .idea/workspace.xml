@@ -4,33 +4,8 @@
     <list default="true" id="d5115415-a259-4235-b5f1-8de4f5639f87" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FAQ/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/API/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FAQ/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/API/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FAQ/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/API/api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FAQ/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/API/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FAQ/filters.py" beforeDir="false" afterPath="$PROJECT_DIR$/API/filters.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FAQ/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/API/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FAQ/migrations/0002_auto_20201223_1742.py" beforeDir="false" afterPath="$PROJECT_DIR$/API/migrations/0002_auto_20201223_1742.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FAQ/migrations/0003_auto_20210131_0610.py" beforeDir="false" afterPath="$PROJECT_DIR$/API/migrations/0003_auto_20210131_0610.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FAQ/migrations/0004_auto_20210131_0619.py" beforeDir="false" afterPath="$PROJECT_DIR$/API/migrations/0004_auto_20210131_0619.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FAQ/migrations/0005_companyprofilepage_type.py" beforeDir="false" afterPath="$PROJECT_DIR$/API/migrations/0005_companyprofilepage_type.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FAQ/migrations/0006_remove_requestforproposals_paymentmethod.py" beforeDir="false" afterPath="$PROJECT_DIR$/API/migrations/0006_remove_requestforproposals_paymentmethod.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FAQ/migrations/0007_auto_20210204_2038.py" beforeDir="false" afterPath="$PROJECT_DIR$/API/migrations/0007_auto_20210204_2038.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FAQ/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/API/migrations/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FAQ/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/API/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FAQ/mutations.py" beforeDir="false" afterPath="$PROJECT_DIR$/API/mutations.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FAQ/schema.py" beforeDir="false" afterPath="$PROJECT_DIR$/API/schema.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FAQ/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/API/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FAQ/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/API/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FAQ/types.py" beforeDir="false" afterPath="$PROJECT_DIR$/API/types.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FAQ/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/API/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FAQ/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/API/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/AuthApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/AuthApi.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/AuthReducer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/AuthReducer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/FAQReducer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/FAQReducer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/FAQTypes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/FAQTypes.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/profileApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/profileApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/accounts/CreateCompany/NewCompanyProfile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/accounts/CreateCompany/NewCompanyProfile.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,7 +129,7 @@
       <workItem from="1612427464273" duration="3800000" />
       <workItem from="1612441312555" duration="3375000" />
       <workItem from="1612470715101" duration="1883000" />
-      <workItem from="1612546466688" duration="7816000" />
+      <workItem from="1612546466688" duration="10339000" />
     </task>
     <task id="LOCAL-00001" summary="Extra update">
       <created>1608062295835</created>

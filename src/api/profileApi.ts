@@ -27,7 +27,7 @@ export const instance = axios.create({
 });
 export const profileAPI = {
 
-   PostProfile: (data: {CompanyName : string, type: string, companyLogo: any, CompanyDescriptions: string, section: {}, owner: number}) => {
+   PostProfile: (data: {CompanyName : string, type: string, companyLogo: any, CompanyDescriptions: string, section: {}, owner: number}, csrftoken:string) => {
        debugger
        let form_data = new FormData();
        form_data.append('owner', String(data.owner));
@@ -36,7 +36,12 @@ export const profileAPI = {
        form_data.append('sections', JSON.stringify(data.section));
        form_data.append('companyLogo', data.companyLogo, data.companyLogo.name);
        form_data.append('type', data.type.toLowerCase())
-       return instance.post<SingleProfile>('CompanyProfilePage/', form_data, config2)
+       return instance.post<SingleProfile>('CompanyProfilePage/', form_data, {
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken,
+
+            }})
    },
 
    PutProfile: (form_data: {

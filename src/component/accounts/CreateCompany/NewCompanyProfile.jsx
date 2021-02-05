@@ -123,7 +123,7 @@ class NewCompanyProfile extends React.Component {
                 section: section,
                 owner: owner,
                 type: type
-            }).then(r => history.push('/'),
+            }, csrftoken).then(r => history.push('/'),
                 this.props.createMessage({log_in_ed: "New Company's Profile was created"}))
         }
 
