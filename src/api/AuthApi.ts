@@ -40,11 +40,16 @@ export const authAPI = {
 
         return instance.post('auth/users/reset_password_confirm/', body)
     },
-    activate: (body: any) => {
+    activate: (body: any, csrftoken:string) => {
         debugger
         return instance.post('auth/users/activation/', {
             uid: body.uid,
             token: body.token
-        })
+        },{
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken,
+
+            }})
     },
 }

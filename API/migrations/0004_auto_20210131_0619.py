@@ -7,7 +7,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('FAQ', '0003_auto_20210131_0610'),
+        ('API', '0003_auto_20210131_0610'),
     ]
 
     operations = [
@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='document',
             name='profile',
-            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='FAQ.companyprofilepage'),
+            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='API.companyprofilepage'),
         ),
         migrations.AlterField(
             model_name='document',

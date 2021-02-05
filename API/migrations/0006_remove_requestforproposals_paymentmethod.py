@@ -6,7 +6,7 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('FAQ', '0005_companyprofilepage_type'),
+        ('API', '0005_companyprofilepage_type'),
     ]
 
     operations = [

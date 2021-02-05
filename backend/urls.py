@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.views.generic import TemplateView
 
-from FAQ.views import CompanyProfilePageViewSet, LinksViewSet
+from API.views import CompanyProfilePageViewSet, LinksViewSet
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
@@ -24,7 +24,7 @@ from django.views.decorators.csrf import csrf_exempt
 from graphene_django.views import GraphQLView
 
 urlpatterns = [
-                  path('api/', include('FAQ.urls')),
+                  path('api/', include('API.urls')),
                   path('admin/', admin.site.urls),
                   path('api/auth/', include('djoser.urls.authtoken')),
                   path('api/auth/', include('djoser.urls')),

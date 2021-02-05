@@ -35,7 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'corsheaders',
-    'FAQ',
+    'API',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -87,7 +87,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
+#
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -98,6 +98,7 @@ DATABASES = {
         'PORT': '3306',
     }
 }
+
 
 # # artificial base
 # DATABASES = {
@@ -212,8 +213,8 @@ CORS_ALLOW_METHODS = [
 ]
 
 GRAPHENE = {
-    'SCHEMA': 'FAQ.schema.schema',
-    'SCHEMA2': 'FAQ.schema.schema2'
+    'SCHEMA': 'API.schema.schema',
+    'SCHEMA2': 'API.schema.schema2'
 }
 
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

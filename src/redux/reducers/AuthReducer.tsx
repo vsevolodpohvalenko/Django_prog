@@ -154,7 +154,7 @@ export const ActivateUser = (body: any, csrftoken: string): ThunkAction<Promise<
             password: localStorage.getItem('password')
         }
         try {
-            const response1 = await authAPI.activate(body)
+            const response1 = await authAPI.activate(body, csrftoken)
             dispatch(actions.activatedSuccessful(response1.data))
             dispatch(actions.loadUserSuccess());
             debugger

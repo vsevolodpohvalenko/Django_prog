@@ -33,7 +33,7 @@ class FAQ_item(models.Model):
         return self.Title
 
     class Meta:
-        verbose_name = 'FAQ'
+        verbose_name = 'API'
         verbose_name_plural = 'FAQS'
         ordering = ('Title',)
 

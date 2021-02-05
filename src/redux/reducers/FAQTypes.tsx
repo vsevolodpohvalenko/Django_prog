@@ -1,6 +1,6 @@
 const ACTIVE_ITEM = "ACTIVE_ITEM"
-const GET_FAQ_GROUPS = "GET-FAQ-GROUPS"
-const GET_FAQ_ITEM = "GET-FAQ-ITEM"
+const GET_FAQ_GROUPS = "GET-API-GROUPS"
+const GET_FAQ_ITEM = "GET-API-ITEM"
 const MAKE_ACTIVE = "MAKE_ACTIVE"
 
 interface ActiveItem {

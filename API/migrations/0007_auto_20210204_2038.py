@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('FAQ', '0006_remove_requestforproposals_paymentmethod'),
+        ('API', '0006_remove_requestforproposals_paymentmethod'),
     ]
 
     operations = [
