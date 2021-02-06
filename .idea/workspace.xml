@@ -4,7 +4,7 @@
     <list default="true" id="d5115415-a259-4235-b5f1-8de4f5639f87" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/profileApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/profileApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/Templates/account_template/account_template.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/Templates/account_template/account_template.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/component/accounts/CreateCompany/NewCompanyProfile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/accounts/CreateCompany/NewCompanyProfile.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -129,7 +129,7 @@
       <workItem from="1612427464273" duration="3800000" />
       <workItem from="1612441312555" duration="3375000" />
       <workItem from="1612470715101" duration="1883000" />
-      <workItem from="1612546466688" duration="10339000" />
+      <workItem from="1612546466688" duration="11505000" />
     </task>
     <task id="LOCAL-00001" summary="Extra update">
       <created>1608062295835</created>

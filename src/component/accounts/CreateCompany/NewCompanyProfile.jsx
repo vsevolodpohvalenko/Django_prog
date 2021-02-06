@@ -158,8 +158,8 @@ class NewCompanyProfile extends React.Component {
                             />
                         </div>
                         <div className="form-group">
-                            <CustomDropZone label="Attachments" AllowButton={1} onDrop={handleDrop4}
-                                            p="Drag&Drop Your attachments here"/>
+                            <CustomDropZone label="Company Logo" AllowButton={1} onDrop={handleDrop4}
+                                            p="Drag&Drop Your logo here"/>
                         </div>
                         <div className="form-group">
                             <label>Company Descriptions</label>
@@ -177,7 +177,7 @@ class NewCompanyProfile extends React.Component {
                                           onChange={this.onChange_1}/>
                         </div>
                         <div className="form-group">
-                            <label>ProductDescriptions</label>
+                            <label>Product Descriptions</label>
                             <textarea
 
                                 className="form-control"
