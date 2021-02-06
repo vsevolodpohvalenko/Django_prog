@@ -35,7 +35,6 @@ class Alerts extends PureComponent {
 
 const mapStateToProps = (state) => {
     return{
-
     error: state.error,
     message: state.message
 }}
