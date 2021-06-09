@@ -7,8 +7,8 @@ verify_ssl = true
 
 [packages]
 djoser = "*"
-pillow = "*"
-django = "*"
+Pillow = "*"
+Django = "*"
 django-cors-headers = "*"
 django-rest-framework = "*"
 django-inlinecss = "*"
@@ -26,6 +26,12 @@ boto3 = "*"
 django-templated-mail = "*"
 graphene = "*"
 mysql-client = "*"
+channels = "*"
+asgi_redis = "*"
+channels-redis = "*"
+async-to-sync = "*"
+uWSGI = "*"
+asgiref = "*"
 
 [requires]
 python_version = "3.8"

@@ -1,4 +1,4 @@
-import {instance} from "./profileApi";
+    import {instance} from "./profileApi";
 
 export const contentAPI = {
     content: () => {

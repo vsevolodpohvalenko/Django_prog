@@ -2,8 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d5115415-a259-4235-b5f1-8de4f5639f87" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/backend/routing.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend_nginx.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend_uwsgi.ini" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/component/whiteBoard/board.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/component/whiteBoard/whiteBoars.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uwsgi_params" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/websockets/consumers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/websockets/routing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/layout/Alerts.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/layout/Alerts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/API/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pipfile" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pipfile.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/wsgi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/ContentApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/ContentApi.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,15 +62,18 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ProjectX" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.detected.package.stylelint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.path.for.package.stylelint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.standard" value="" />
+    <property name="node.js.selected.package.stylelint" value="" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
@@ -61,9 +83,11 @@
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/public" />
-      <recent name="$PROJECT_DIR$/frontend/build" />
       <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/websockets" />
+      <recent name="$PROJECT_DIR$/backend" />
+      <recent name="$PROJECT_DIR$/src/component/Connections/Chat" />
+      <recent name="$PROJECT_DIR$/public" />
     </key>
   </component>
   <component name="RunManager">
@@ -129,6 +153,27 @@
       <workItem from="1612470715101" duration="1883000" />
       <workItem from="1612546466688" duration="12206000" />
       <workItem from="1612597664121" duration="3502000" />
+      <workItem from="1612897688726" duration="9000" />
+      <workItem from="1614534200818" duration="4281000" />
+      <workItem from="1614608212210" duration="4240000" />
+      <workItem from="1614628065218" duration="1283000" />
+      <workItem from="1614792337355" duration="613000" />
+      <workItem from="1614802624380" duration="17659000" />
+      <workItem from="1615052766786" duration="9082000" />
+      <workItem from="1615106711120" duration="11172000" />
+      <workItem from="1615142402256" duration="1320000" />
+      <workItem from="1615146630625" duration="1765000" />
+      <workItem from="1615321259221" duration="8662000" />
+      <workItem from="1615397562669" duration="3256000" />
+      <workItem from="1615408509219" duration="777000" />
+      <workItem from="1616216221042" duration="25000" />
+      <workItem from="1616356456077" duration="2159000" />
+      <workItem from="1616425701917" duration="14000" />
+      <workItem from="1617469707866" duration="74000" />
+      <workItem from="1617633024456" duration="6594000" />
+      <workItem from="1617735047183" duration="1792000" />
+      <workItem from="1617789914119" duration="2000" />
+      <workItem from="1623253685530" duration="1626000" />
     </task>
     <task id="LOCAL-00001" summary="Extra update">
       <created>1608062295835</created>

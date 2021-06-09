@@ -16,6 +16,5 @@ from dotenv import load_dotenv
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.settings')
 project_folder = os.path.expanduser('~/JollyTeam')  # adjust as appropriate
 load_dotenv(os.path.join(project_folder, '.env'))
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.settings')
 application = get_wsgi_application()
 

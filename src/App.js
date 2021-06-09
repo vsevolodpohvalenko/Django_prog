@@ -29,6 +29,9 @@ import RequestForQuotationContainer from "./component/requestForProposals/reques
 import ProfileContainer from "./component/User/ProfileContainer";
 import AddCompany from "./component/accounts/CreateCompany/NewCompanyProfile";
 import NewCompanyProfile from "./component/accounts/CreateCompany/NewCompanyProfile";
+import {ChatPage} from "./component/Connections/Chat/Chat";
+// import Board from "./component/whiteBoard/whiteBoars";
+
 
 
 const client = new ApolloClient({
@@ -73,11 +76,13 @@ class App extends React.Component {
                             <Route exact path='/login' render={() => <AccountTemplate> <Login/></AccountTemplate>}/>
                             <Route exact path='/faq' component={FrequentlyAskedQuestions}/>
                             <Route exact path='/' component={HomeContainer}/>
+                            {/*<Route exact path='/board' component={Board}/>*/}
                             <PrivateRoute exact path='/contact' component={ContactContainer}/>
                             <PrivateRoute exact path='/profileEdit/:num' component={ProfileEditContainer}/>
                             <PrivateRoute exact path='/profileView' component={ProfileViewContainer}/>
                             <Route exact path='/request_for_proposals' component={RequestForQuotationContainer}/>
                             <Route exact path='/companies' component={CompaniesContainer}/>
+                            <Route exact path='/chat' component={ChatPage}/>
                             <PrivateRoute exact path='/profile/:id' component={ProfileContainer}/>
                             <Route component={() => <PageNotFound/>} />
                         </Switch>
@@ -90,3 +95,4 @@ class App extends React.Component {
 }
 
 export default App;
+

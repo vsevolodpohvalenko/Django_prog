@@ -26,6 +26,7 @@ from graphene_django.views import GraphQLView
 urlpatterns = [
                   path('api/', include('API.urls')),
                   path('admin/', admin.site.urls),
+
                   path('api/auth/', include('djoser.urls.authtoken')),
                   path('api/auth/', include('djoser.urls')),
                   path('links', LinksViewSet.as_view(), name="Links"),

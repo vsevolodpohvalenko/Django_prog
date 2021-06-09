@@ -131,6 +131,5 @@ class RequestForProposals(models.Model):
 class Links(models.Model):
     find = models.CharField(max_length=64)
 
-
 class PaymentMethods(models.Model):
     method = models.CharField(max_length=64)

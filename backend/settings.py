@@ -27,7 +27,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['jollyteam.herokuapp.com', "restcountries.eu", '127.0.0.1', 'localhost', 'localhost:8000']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -36,6 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'corsheaders',
     'API',
+    'websockets',
+    'channels',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -43,7 +45,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'accounts',
-
     'rest_framework',
     'rest_framework.authtoken',
     'djoser',
@@ -66,6 +67,17 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'backend.urls'
+
+ASGI_APPLICATION = "backend.routing.application"
+
+CHANNEL_LAYERS = {
+  "default": {
+    "BACKEND": "channels_redis.core.RedisChannelLayer",
+    "CONFIG": {
+      "hosts": [("127.0.0.1", 6379)],
+    },
+  },
+}
 
 TEMPLATES = [
     {
@@ -99,6 +111,9 @@ DATABASES = {
     }
 }
 
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "build", "static"),
+)
 
 # # artificial base
 # DATABASES = {
@@ -219,21 +234,24 @@ GRAPHENE = {
 
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'build', 'static')
+STATIC_ROOT = os.path.join("JollyTeam", 'build', 'static')
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-AWS_S3_FILE_OVERWRITE = False
-AWS_DEFAULT_ACL = None
+
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",
     "http://127.0.0.1:9000",
-    'http://localhost:3000'
+    'http://localhost:3000',
+    'http://127.0.0.1:8000'
 ]
 MEDIA_ROOT = os.path.join(BASE_DIR, 'build', 'static', 'media')
-AWS_ACCESS_KEY_ID = 'AKIAVZYOXE5E47QUZKXM'
-AWS_SECRET_ACCESS_KEY = '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'
+
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+AWS_ACCESS_KEY_ID = 'AKIAVZYOXE5E4CSEIZP7'
+AWS_SECRET_ACCESS_KEY = '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'
 AWS_STORAGE_BUCKET_NAME = 'vsevolod-jolly-bucket'
 AWS_S3_REGION_NAME = 'eu-central-1'
 S3_USE_SIGV4 = True
